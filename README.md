@@ -1,4 +1,4 @@
-# Case Studies Portfolio — Quantitative Analysis & Forecasting
+# Case Studies Portfolio - Quantitative Analysis & Forecasting
 
 This repository contains a collection of analytical case studies covering descriptive statistics, distribution comparison, regression modeling, and financial forecasting. The projects demonstrate applied statistical reasoning, reproducible workflows, and model comparison across classical and machine-learning approaches.
 
