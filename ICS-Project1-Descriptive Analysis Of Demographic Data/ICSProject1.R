@@ -3,7 +3,7 @@ library('dplyr')
 library('ggplot2')
 library('gridExtra')
 #Loading the data
-census_data <- read.csv('census2001_2021.csv')
+census_data <- read.csv('../data/census2001_2021.csv')
 
 #View the Data
 head(census_data)

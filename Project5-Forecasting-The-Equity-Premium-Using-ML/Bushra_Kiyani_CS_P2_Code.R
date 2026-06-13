@@ -9,9 +9,6 @@ library(ggplot2)
 
 citation(rpart)
 
-# set working directory to source file location (only in rstudio)
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 # set seed
 set.seed(4)
 
@@ -19,7 +16,7 @@ set.seed(4)
 # Import the series as a data frame in R
 #======================================================================
 
-raw_data <- read_csv("PredictorData2022.xlsx - Monthly.csv")
+raw_data <- read_csv("../data/PredictorData2022.xlsx - Monthly.csv")
 
 colnames(raw_data)[1:18]<-c("Date","Index","Dividends","Earnings","Book-to-Market Ratio",
                             "Treasury Bills","Corporate Bond Yields on AAA-rated Bonds",
@@ -267,7 +264,7 @@ ggsave("rf_Var_Importance.pdf", plot_rf, width = 11, height = 6)
 #======================================================================
 
 # Assuming you have calculated MSFEs for all scenarios
-msfe_values <- c(msfe_tree_Lagged_return, msfe_rf_Lagged_return, msfe_tree_all_covariates, msfe_rf_all_covariates)
+msfe_values <- c(msfe_tree_lagged_return, msfe_rf_lagged_return, msfe_tree_all_covariates, msfe_rf_all_covariates)
 task_names <- c("Regression Trees (Lagged)", "Random Forests (Lagged)", "Regression Trees (Covariates)", "Random Forests (Covariates)")
 
 # Creating a data frame with task names and their corresponding MSFE values

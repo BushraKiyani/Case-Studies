@@ -7,16 +7,13 @@ library(readr)
 library(stats)
 library(forecast)
 
-# set working directory to source file location (only in rstudio)
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 #======================================================================
 #a) Import the series of a given frequency as a data frame in R
 #======================================================================
 
-monthly_data <- read_csv("PredictorData2022.xlsx - Monthly.csv")
-quarterly_data <- read_csv("PredictorData2022.xlsx - Quarterly.csv")
-yearly_data <- read_csv("PredictorData2022.xlsx - Annual.csv")
+monthly_data <- read_csv("../data/PredictorData2022.xlsx - Monthly.csv")
+quarterly_data <- read_csv("../data/PredictorData2022.xlsx - Quarterly.csv")
+yearly_data <- read_csv("../data/PredictorData2022.xlsx - Annual.csv")
 
 colnames(monthly_data)[1:18]<-c("Date","Index","Dividends","Earnings","Book-to-Market-ratio",
                                 "Treasury Bills","Corporate Bond Yields on AAA-rated Bonds",

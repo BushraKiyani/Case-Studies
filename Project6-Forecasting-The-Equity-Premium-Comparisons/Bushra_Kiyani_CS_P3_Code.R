@@ -13,18 +13,15 @@ library(stats)
 library(forecast)
 library(pheatmap)
 
-# set working directory to source file location (only in rstudio)
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-
 # set seed
 set.seed(4)
 #===================================================================
 #Import the series of a given frequency as a data frame in R
 #======================================================================
 
-monthly_raw_data <- read_csv("PredictorData2022.xlsx - Monthly.csv")
-quarterly_raw_data <- read_csv("PredictorData2022.xlsx - Quarterly.csv")
-annual_raw_data <- read_csv("PredictorData2022.xlsx - Annual.csv")
+monthly_raw_data <- read_csv("../data/PredictorData2022.xlsx - Monthly.csv")
+quarterly_raw_data <- read_csv("../data/PredictorData2022.xlsx - Quarterly.csv")
+annual_raw_data <- read_csv("../data/PredictorData2022.xlsx - Annual.csv")
 colnames(monthly_raw_data)<-c("Date","Index","Dividends","Earnings","Book-to-Market Ratio",
                               "Treasury Bills","Corporate Bond Yields on AAA-rated Bonds",
                               "Corporate Bond Yields on BAA-rated Bonds",

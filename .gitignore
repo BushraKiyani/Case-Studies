@@ -1,0 +1,16 @@
+# IDE
+.idea/
+
+# R artifacts
+.RData
+.Rhistory
+.Rproj.user/
+
+# PDF files — ignore generated plots/outputs but keep report deliverables
+*.pdf
+!*Report*.pdf
+!*-Report.pdf
+
+# Python / Jupyter
+__pycache__/
+.ipynb_checkpoints/

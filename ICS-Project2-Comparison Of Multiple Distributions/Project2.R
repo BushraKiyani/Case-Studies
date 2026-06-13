@@ -4,7 +4,7 @@ library(rstatix)
 library(dplyr)
 library(gridExtra)
 
-swimming_data <- read.csv("SwimmingTimes.csv")
+swimming_data <- read.csv("../data/SwimmingTimes.csv")
 head(swimming_data)
 
 # Checking Number of Categories

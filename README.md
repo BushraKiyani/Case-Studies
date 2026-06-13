@@ -11,54 +11,67 @@ The case studies progress from foundational statistical analysis to predictive m
 | Project | Focus Area | Key Methods | Tools |
 |----------|------------|------------|--------|
 | **Descriptive Demographic Analysis** | Exploratory Data Analysis | Summary statistics, visualization | R |
-| **Distribution Comparison Study** | Statistical distribution testing | Distribution fitting, hypothesis testing | R |
-| **Regression Modeling Case Study** | Linear regression & interpretation | Model diagnostics, inference | Python (Jupyter) |
-| **Equity Premium Forecasting (Baseline)** | Financial time-series forecasting | Predictive regressions | R |
-| **Equity Premium Forecasting (ML)** | Machine learning in finance | ML-based predictive models | R |
-| **Forecast Comparison Study** | Model evaluation | Out-of-sample comparison, performance metrics | R |
+| **Distribution Comparison Study** | Statistical distribution testing | One-way ANOVA, multiple-testing correction | R |
+| **Regression Modeling Case Study** | Linear regression & interpretation | Best-subset regression (AIC/BIC) | R (IRkernel/Jupyter) |
+| **Equity Premium Forecasting (Baseline)** | Financial time-series forecasting | AR models, OLS predictive regression | R |
+| **Equity Premium Forecasting (ML)** | Machine learning in finance | Regression trees, random forests | R |
+| **Forecast Comparison Study** | Model evaluation | Rolling-window forecasts, Diebold-Mariano test | R |
+
+---
+
+## Data
+
+All datasets live in the shared `data/` folder at the repository root. Each project reads from `../data/<filename>` relative to its own folder.
+
+| File | Description | Used by |
+|------|-------------|---------|
+| `census2001_2021.csv` | UN demographic data: life expectancy and infant mortality by country/region, 2001 and 2021 | P1 |
+| `SwimmingTimes.csv` | European Championship 200 m swim finishing times across five stroke categories | P2 |
+| `bodymeasurements.csv` | Body measurement dataset (height, weight, and body-part circumferences) for regression modelling | P3 |
+| `PredictorData2022.xlsx - Monthly.csv` | Goyal-Welch equity-premium predictors at monthly frequency, through 2022 | P4, P5, P6 |
+| `PredictorData2022.xlsx - Quarterly.csv` | Same predictors aggregated to quarterly frequency | P4, P6 |
+| `PredictorData2022.xlsx - Annual.csv` | Same predictors aggregated to annual frequency | P4, P6 |
 
 ---
 
 ## Detailed Project Overview
 
 ### 1. Descriptive Demographic Analysis
-- Exploratory analysis of demographic variables
-- Computation of summary statistics
-- Data visualization
-- Implemented in R with both script and R Markdown versions
-- Accompanied by a final analytical report (PDF)
+- Exploratory analysis of life expectancy (male, female, combined) and infant mortality rate
+- Histograms, pair-plot correlations, and boxplots by region/subregion
+- 2001 vs. 2021 scatter-plot comparison
+- Implemented in R with both script (`ICSProject1.R`) and R Markdown (`ICSProject1.Rmd`)
 
 ### 2. Comparison of Multiple Distributions
-- Empirical comparison of statistical distributions
-- Hypothesis testing and distribution fitting
-- Applied to a swimming time dataset
+- One-way ANOVA to test for differences in 200 m finishing times across five stroke categories
+- Pairwise t-tests with Bonferroni and Holm multiple-testing corrections
+- Assumptions checked via QQ plots and Levene's test
 - Reproducible workflow in R / R Markdown
-- Includes supporting report documentation
 
 ### 3. Regression Modeling Case Study
-- Linear regression modeling
-- Interpretation of coefficients
-- Model diagnostics and evaluation
-- Implemented in Python using Jupyter Notebook
-- Accompanied by a structured analytical report
+- Best-subset regression to predict height from body measurements
+- AIC and BIC used for model selection; full and reduced models compared
+- Residual diagnostics (QQ plot, residual-vs-fitted) reported
+- Implemented in R using an IRkernel Jupyter Notebook (`ICSProject3.ipynb`)  
+  *(Note: the kernel is R, not Python — the notebook requires IRkernel installed)*
 
 ### 4. Equity Premium Forecasting (Baseline)
-- Time-series forecasting of the equity premium
-- Examination of predictive variables
-- Classical regression-based forecasting framework
-- Code and report provided
+- Excess return series derived from Goyal-Welch predictors at monthly, quarterly, and annual frequencies
+- AR(p) model order selected by AIC; full-sample fitted values compared to actual returns
+- OLS predictive regressions using each predictor individually and all predictors jointly
+- Backward and forward stepwise selection (AIC) for predictor reduction
 
 ### 5. Equity Premium Forecasting Using Machine Learning
-- Extension of baseline forecasting using ML models
-- Implementation and evaluation of predictive algorithms
-- Performance comparison with traditional methods
-- Code and analytical report included
+- Monthly data only; regression trees and random forests as forecasting models
+- Cross-validated model selection on training split; evaluated on held-out test set
+- Two forecast scenarios: (a) lagged excess returns only, (b) all lagged predictors
+- Permutation-based variable importance reported for both model families  
+  *(Folder name is `Project5-Forecasting-The-Equity-Premium-Using-ML`)*
 
 ### 6. Equity Premium Forecasting — Comparative Study
-- Comparative evaluation of forecasting approaches
-- Out-of-sample performance analysis
-- Consolidated findings across model families
-- Final report with supporting R code
+- Rolling/expanding-window one-step-ahead forecasts across annual, quarterly, and monthly frequencies
+- Models compared: AR/linear, backward-selected OLS, forward-selected OLS, regression tree, random forest, single-predictor OLS
+- Diebold-Mariano pairwise test; p-value heatmaps produced for each frequency
 
 ---
 
@@ -77,8 +90,8 @@ The case studies progress from foundational statistical analysis to predictive m
 ## Technical Stack
 
 - **R / RStudio**
-- **Python (Jupyter Notebook)**
 - R Markdown for reproducible reporting
+- **R (IRkernel)** via Jupyter Notebook for Project 3
 - Structured analytical documentation (PDF reports)
 
 ---
@@ -88,14 +101,15 @@ The case studies progress from foundational statistical analysis to predictive m
 Each project folder contains:
 
 - Source code (`.R`, `.Rmd`, or `.ipynb`)
-- Associated datasets (where permitted)
 - Final report documentation (PDF)
+
+All datasets are in the shared `data/` folder at the repository root.
 
 To reproduce analyses:
 
 1. Navigate to the project folder.
 2. Install required packages (see script headers).
-3. Run the script or notebook.
+3. Run the script or notebook (working directory should be the project folder).
 4. Review the report for methodology and interpretation.
 
 ---
@@ -103,4 +117,4 @@ To reproduce analyses:
 ## Notes
 
 These projects were completed as part of structured quantitative analysis coursework and are presented to document applied statistical and predictive modeling capabilities.
-Datasets are included where redistribution is permitted. If any dataset is restricted, instructions for access are provided within the respective project folder.
+All datasets used in these analyses are included in the shared `data/` folder for full reproducibility.
